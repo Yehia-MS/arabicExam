@@ -189,11 +189,12 @@ function h(tag, cls, ...kids) {
 }
 function table(rows, cols, me) {
   const t = h("table");
-  const head = h("tr", "", h("th", "n", "#"), h("th", "", "الاسم"), h("th", "s", "النقاط"));
+  const head = h("tr", "", h("th", "n", "#"), h("th", "", "الاسم"), h("th", "s", "صحيحة"), h("th", "s", "النقاط"));
   t.append(head);
   rows.forEach((x, i) => {
+    const correctStr = x.correct !== undefined ? `${x.correct}/${TOTAL}` : "-";
     const tr = h("tr", me && x.name.toLowerCase() === me.toLowerCase() ? "me" : "",
-      h("td", "n", String(i + 1)), h("td", "", x.name), h("td", "s", String(x.score)));
+      h("td", "n", String(i + 1)), h("td", "", x.name), h("td", "s", correctStr), h("td", "s", String(x.score)));
     t.append(tr);
   });
   return t;
