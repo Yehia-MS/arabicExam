@@ -12,6 +12,7 @@ const PIN = process.env.TEACHER_PIN || String(crypto.randomInt(1000, 10000));
 const MAX_PLAYERS = 20;       // أقصى عدد للطلاب
 const Q_TIME = 30000;         // 30 ثانية لكل سؤال
 const READY_TIME = 3000;      // عدّ تنازلي قبل السؤال الأول
+const REVEAL_TIME = 5000;     // 5 ثوانٍ لعرض الإجابة الصحيحة قبل الانتقال التلقائي
 const GRACE = 600;            // سماح بسيط لتأخر الشبكة (ms)
 const DB_URL = "https://test10markscir-default-rtdb.firebaseio.com";
 const BOARD = "scores_arabic_live";
