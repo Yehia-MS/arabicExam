@@ -292,7 +292,7 @@ function renderQuestion() {
     const mini = $("mini"); mini.textContent = "";
     mini.append(h("p", "status", `مجموعك: ${y.score} نقطة – ترتيبك ${y.rank} من ${S.count}`));
     mini.append(table(S.top, null, studentName));
-    mini.append(h("p", "sub", "في انتظار المعلمة للسؤال التالي..."));
+    mini.append(h("p", "sub", "السؤال التالي يبدأ تلقائياً بعد قليل..."));
   }
   tick();
 }
