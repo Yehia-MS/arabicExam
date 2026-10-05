@@ -206,8 +206,9 @@ function api(path_, b, ip) {
           if (game.phase !== 'lobby' || game.players.size < 1) return { error: 'لا يمكن البدء الآن.' };
           startReady(); break;
         case 'skip': endQuestion(); break;
-        case 'next':
+       case 'next':
           if (game.phase !== 'reveal') return { error: 'غير متاح الآن.' };
+          clearTimeout(game.timer); // إيقاف المؤقت التلقائي
           game.qi + 1 < QUESTIONS.length ? startQuestion(game.qi + 1) : finish(); break;
         case 'kick':
           if (game.phase !== 'lobby') return { error: 'متاح في غرفة الانتظار فقط.' };
