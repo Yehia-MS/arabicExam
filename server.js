@@ -71,7 +71,7 @@ function studentView(p) {
     v.question = { text: q.q, options: p.order.map(oi => q.options[oi]) };
     if (game.phase === 'reveal') {
       v.reveal = { correctPos: p.order.indexOf(q.answer) };
-      v.top = list.slice(0, 5).map(x => ({ name: x.name, score: x.score }));
+      v.top = list.slice(0, 5).map(x => ({ name: x.name, score: x.score, correct: x.correct }));
     }
   }
   if (game.phase === 'finished') v.board = list.map(x => ({ name: x.name, score: x.score, correct: x.correct }));
