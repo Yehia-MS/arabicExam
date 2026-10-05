@@ -126,8 +126,19 @@ function endQuestion() {
   clearTimeout(game.timer);
   const q = QUESTIONS[game.qi], dist = q.options.map(() => 0);
   for (const p of game.players.values()) if (p.choice !== null) dist[p.order[p.choice]]++;
-  game.dist = dist; game.phase = 'reveal'; game.endsAt = 0;
+  game.dist = dist; 
+  game.phase = 'reveal'; 
+  game.endsAt = Date.now() + REVEAL_TIME; // تحديث الوقت للطلاب
   broadcast();
+
+  // الانتقال التلقائي للسؤال التالي أو إنهاء الاختبار
+  game.timer = setTimeout(() => {
+    if (game.qi + 1 < QUESTIONS.length) {
+      startQuestion(game.qi + 1);
+    } else {
+      finish();
+    }
+  }, REVEAL_TIME);
 }
 function finish() {
   game.phase = 'finished'; game.endsAt = 0;
