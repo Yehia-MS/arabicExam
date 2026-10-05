@@ -91,7 +91,7 @@ function teacherView() {
     v.question = { text: q.q, options: q.options };
     if (game.phase === 'reveal') {
       v.reveal = { correct: q.answer, dist: game.dist };
-      v.top = list.slice(0, 5).map(x => ({ name: x.name, score: x.score }));
+      v.top = list.slice(0, 5).map(x => ({ name: x.name, score: x.score, correct: x.correct }));
     }
   }
   if (game.phase === 'finished') v.board = list.map(x => ({ name: x.name, score: x.score, correct: x.correct }));
